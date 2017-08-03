@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Unknown</string>
+
+
+    <string name="but_login">登录</string>
+    <string name="but_register">注册</string>
+    <string name="Account_number">请输入账号</string>
+    <string name="Password">请输入密码</string>
+    <string name="User_name">请注册账号:</string>
+    <string name="User_password">请注册密码</string>
+    <string name="User_password2">请确认密码</string>
+</resources>
