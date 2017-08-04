@@ -23,7 +23,7 @@
     <LinearLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="50dp"
         android:background="#f7f5f5"
         android:orientation="horizontal">
 
@@ -37,13 +37,15 @@
 
             <ImageView
                 android:id="@+id/img_contacts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:background="#00000000"
                 android:clickable="false"
                 android:src="@drawable/main_conversation_img" />
 
             <TextView
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/contacts"
@@ -66,13 +68,15 @@
 
             <ImageView
                 android:id="@+id/img_conversation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:background="#00000000"
                 android:clickable="false"
                 android:src="@drawable/main_contacts_img" />
 
             <TextView
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/conversation"
@@ -80,7 +84,11 @@
 
         </LinearLayout>
 
-
+        <View
+            android:layout_width="1dp"
+            android:layout_height="47dp"
+            android:background="#dedbdb" >
+        </View>
         <LinearLayout
             android:id="@+id/ll_bottom_menu_personal"
             android:layout_width="0dp"
@@ -91,13 +99,15 @@
 
             <ImageView
                 android:id="@+id/img_personal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:background="#00000000"
                 android:clickable="false"
                 android:src="@drawable/main_personal_img" />
 
             <TextView
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/personal"

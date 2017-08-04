@@ -12,7 +12,6 @@ import cn.bmob.newim.bean.BmobIMConversation;
 
 public class ConversationAdapter extends BaseQuickAdapter<BmobIMConversation> {
 
-
     public ConversationAdapter(List<BmobIMConversation> data) {
         super(R.layout.item_conversation, data);
     }
