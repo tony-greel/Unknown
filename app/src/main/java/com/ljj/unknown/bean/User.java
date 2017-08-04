@@ -8,13 +8,5 @@ import cn.bmob.v3.BmobUser;
 
 public class User extends BmobUser {
 
-    private String img;
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
 }

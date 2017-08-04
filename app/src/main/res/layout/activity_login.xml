@@ -8,8 +8,6 @@
     android:fitsSystemWindows="true">
 
 
-
-
         <ImageView
             android:id="@+id/long_img"
             android:layout_width="match_parent"
@@ -43,18 +41,19 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="40dp">
-            <TextView
+            <ImageView
                 android:textSize="15sp"
                 android:background="@drawable/name"
                 android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
             <EditText
+                android:textSize="13sp"
                 android:maxLines="1"
                 android:id="@+id/et_login_username"
                 android:hint="@string/Account_number"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="36dp" />
         </LinearLayout>
 
         <View
@@ -65,19 +64,20 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="40dp">
-            <TextView
+            <ImageView
                 android:textSize="15sp"
                 android:background="@drawable/password"
                 android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
             <EditText
+                android:textSize="13sp"
                 android:maxLines="1"
                 android:inputType="textPassword"
                 android:id="@+id/et_login_password"
                 android:hint="@string/Password"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="36dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -90,7 +90,7 @@
         android:text="@string/but_login"
         android:textColor="@color/btu_login"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="533dp"
         android:layout_marginStart="29dp" />
 
     <Button
@@ -101,7 +101,7 @@
         android:text="@string/but_register"
         android:textColor="@color/btu_login"
         android:layout_marginLeft="193dp"
-        android:layout_marginTop="460dp"/>
+        android:layout_marginTop="533dp"/>
 
 
 
