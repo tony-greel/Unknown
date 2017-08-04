@@ -1,4 +1,4 @@
-package com.ljj.unknown.activity.viewpager;
+package com.ljj.unknown.view;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
