@@ -12,7 +12,7 @@
             android:id="@+id/long_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="-3dp"
             android:layout_marginRight="-160dp"
             android:scaleType="centerCrop"
             android:src="@drawable/login"/>
@@ -33,7 +33,7 @@
         android:layout_marginRight="70dp"
         android:layout_marginTop="240dp"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="100dp"
         android:id="@+id/linearLayout"
        >
 
@@ -51,6 +51,7 @@
                 android:textSize="13sp"
                 android:maxLines="1"
                 android:id="@+id/et_login_username"
+                android:background="@drawable/btn_login"
                 android:hint="@string/Account_number"
                 android:layout_width="match_parent"
                 android:layout_height="36dp" />
@@ -76,10 +77,37 @@
                 android:inputType="textPassword"
                 android:id="@+id/et_login_password"
                 android:hint="@string/Password"
+                android:background="@drawable/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="36dp" />
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/long_linear"
+        android:layout_width="match_parent"
+        android:layout_height="90dp" 
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="10dp">
+        
+        <ImageButton
+            android:id="@+id/qq_long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:background="@drawable/q_long"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="80dp"
+            />
+        
+        <ImageButton
+            android:id="@+id/micro_long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/w_long"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="120dp"/>
+        
+   </LinearLayout>
 
 
     <Button
