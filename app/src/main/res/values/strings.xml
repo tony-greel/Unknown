@@ -10,8 +10,6 @@
     <string name="User_password">请注册密码</string>
     <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。</string>
     <string name="User_password2">请确认密码</string>
-
-
     <string name="contacts">消息</string>
     <string name="conversation">联系人</string>
     <string name="personal">个人</string>
