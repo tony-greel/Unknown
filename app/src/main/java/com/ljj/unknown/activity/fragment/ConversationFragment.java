@@ -42,8 +42,10 @@ public class ConversationFragment extends Fragment {
             }
         });
         srlConversation.setEnableLoadmore(false);
-        srlConversation.setHeaderHeight(150);
-        srlConversation.setRefreshHeader(new DeliveryHeader(getActivity()));
+        srlConversation.setHeaderHeight(250);
+        DeliveryHeader header = new DeliveryHeader(getActivity());
+        header.setPrimaryColors(getActivity().getColor(R.color.blue_balloon));
+        srlConversation.setRefreshHeader(header);
         return view;
     }
 

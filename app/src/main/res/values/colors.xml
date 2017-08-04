@@ -9,5 +9,5 @@
     <color name="black"> #000000</color>
     <color name="share_text">#ff000000</color>
     <color name="btu_login">#ffffff</color>
-
+    <color name="blue_balloon">#7bc9fc</color>
 </resources>
