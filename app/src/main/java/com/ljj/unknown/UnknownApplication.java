@@ -27,15 +27,15 @@ public class UnknownApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Bmob.initialize(this,"fe911a5b766eb904c5c717612157bc8b");
-        BmobIM.init(this);
-        BmobIM.registerDefaultMessageHandler(new UnknownMessageHandler());
-        //压缩图片框架初始化
-        Tiny.getInstance().init(this);
-        context = getApplicationContext();
-        SImagePicker.init(new PickerConfig.Builder().setAppContext(this)
-                .setImageLoader(new GlideImageLoader())
-                .setToolbaseColor(Color.parseColor("#108de8"))
-                .build());
+//        BmobIM.init(this);
+//        BmobIM.registerDefaultMessageHandler(new UnknownMessageHandler());
+//        //压缩图片框架初始化
+//        Tiny.getInstance().init(this);
+//        context = getApplicationContext();
+//        SImagePicker.init(new PickerConfig.Builder().setAppContext(this)
+//                .setImageLoader(new GlideImageLoader())
+//                .setToolbaseColor(Color.parseColor("#108de8"))
+//                .build());
 
     }
 }

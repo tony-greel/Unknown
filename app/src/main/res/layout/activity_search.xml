@@ -28,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:textSize="13sp"
             android:id="@+id/et_search_username"
             android:layout_width="match_parent"
             android:layout_marginLeft="50dp"
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tv_result_username"
-            android:layout_marginTop="29dp"
+            android:layout_marginTop="26dp"
             android:textColor="@color/color_primary"
             android:textSize="13sp"
             android:layout_marginLeft="60dp"
