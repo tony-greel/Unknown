@@ -104,7 +104,7 @@ public class BaseActivity extends AppCompatActivity {
         }
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setHomeAsUpIndicator(R.drawable.black_back);
+            actionBar.setHomeAsUpIndicator(R.drawable.white_back);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle("");
         }

@@ -37,7 +37,6 @@ dependencies {
         exclude group: 'com.android.support'
     })
     compile 'com.yalantis:phoenix:1.2.3'
-
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'cn.bmob.android:bmob-im:2.0.6@aar'

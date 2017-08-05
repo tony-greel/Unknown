@@ -9,11 +9,10 @@ import android.view.ViewGroup;
 
 import com.ljj.unknown.R;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
+
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-import com.yalantis.phoenix.PullToRefreshView;
-import com.yalantis.phoenix.refresh_view.SunRefreshView;
+
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ljj.unknown.activity.SearchActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.ljj.unknown.activity.SearchActivity"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <android.support.v7.widget.Toolbar
+        android:elevation="5dp"
+        android:id="@+id/tb_search"
+        android:layout_marginBottom="5dp"
+        android:background="@color/color_primary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="查找好友"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_search_username"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/et_login_background" />
+
+        <ImageButton
+            android:layout_margin="10dp"
+            android:id="@+id/image_but_search"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/search" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_search_result"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            app:civ_border_color="@color/color_primary"
+            app:civ_border_width="2dp"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/cv_result_head"
+            android:src="@drawable/ic_portrait_but"
+            android:layout_width="45dp"
+            android:layout_height="45dp" />
+        <TextView
+            android:id="@+id/tv_result_nickname"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            android:layout_marginLeft="60dp"
+            android:text="你妈拐"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_result_username"
+            android:layout_marginTop="29dp"
+            android:textColor="@color/color_primary"
+            android:textSize="13sp"
+            android:layout_marginLeft="60dp"
+            android:text="用户名：875224980"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

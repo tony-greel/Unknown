@@ -1,10 +1,12 @@
 package com.ljj.unknown.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -92,7 +94,7 @@ public class MainActivity extends FragmentActivity {
         });
     }
 
-    @OnClick({R.id.ll_bottom_menu_conversation, R.id.ll_bottom_menu_contacts, R.id.ll_bottom_menu_personal})
+    @OnClick({R.id.ll_bottom_menu_conversation, R.id.ll_bottom_menu_contacts, R.id.ll_bottom_menu_personal, R.id.iv_add_friend})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_bottom_menu_conversation:
@@ -104,6 +106,10 @@ public class MainActivity extends FragmentActivity {
             case R.id.ll_bottom_menu_personal:
                 viewPagerMian.setCurrentItem(2);
                 break;
+            case R.id.iv_add_friend:
+                Intent intent = new Intent(this,SearchActivity.class);
+                startActivity(intent);
         }
     }
+
 }
