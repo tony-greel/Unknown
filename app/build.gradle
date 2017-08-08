@@ -57,4 +57,5 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
     compile 'org.litepal.android:core:1.5.1'
     testCompile 'junit:junit:4.12'
+
 }

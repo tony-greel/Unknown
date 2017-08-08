@@ -1,5 +1,6 @@
 package com.ljj.unknown.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -49,7 +50,6 @@ public class SearchActivity extends BaseActivity {
         initHome();
     }
 
-
     @OnClick({R.id.image_but_search, R.id.rl_search_result})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -96,6 +96,9 @@ public class SearchActivity extends BaseActivity {
                 }
                 break;
             case R.id.rl_search_result:
+                Intent intent = new Intent(this,PersonalInformation.class);
+                startActivity(intent);
+
                 break;
         }
     }

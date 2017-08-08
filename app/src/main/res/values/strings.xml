@@ -13,4 +13,5 @@
     <string name="contacts">消息</string>
     <string name="conversation">联系人</string>
     <string name="personal">个人</string>
+    <string name="str_news_feed">尬聊</string>
 </resources>

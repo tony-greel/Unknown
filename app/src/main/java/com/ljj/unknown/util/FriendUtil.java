@@ -30,7 +30,6 @@ public class FriendUtil {
      */
     public interface OnFriendDealListener{
         void onSuccess();
-
         void onError(String error);
     }
 

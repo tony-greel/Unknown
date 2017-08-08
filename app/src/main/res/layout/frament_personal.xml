@@ -1,87 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blue_balloon">
 
-   <com.scwang.smartrefresh.layout.SmartRefreshLayout
-       android:id="@+id/srl_personal"
-       android:layout_height="match_parent"
-       android:layout_width="match_parent">
 
-      <de.hdodenhof.circleimageview.CircleImageView
-          android:layout_width="100dp"
-          android:layout_height="100dp"
-          android:layout_marginTop="70dp"
-          android:layout_marginLeft="140dp"
-          android:src="@drawable/ic_portrait_but"/>
+   <de.hdodenhof.circleimageview.CircleImageView
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:layout_marginTop="50dp"
+       android:layout_marginLeft="135dp"
+       android:src="@drawable/ic_portrait_but"
+       android:id="@+id/circleImageView" />
+
+   <TextView
+       android:id="@+id/tv_signature_personal"
+       android:gravity="center"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/circleImageView"
+       android:layout_marginTop="3dp"
+       android:text="name"
+       android:textSize="20dp"
+       />
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/tv_signature_personal"
+       android:layout_marginLeft="80dp"
+       android:text="qianm"
+       android:textSize="15dp"
+       />
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="400dp"
+       android:layout_marginTop="67dp"
+       android:orientation="vertical"
+       android:layout_below="@+id/circleImageView"
+       android:background="@color/btu_login">
 
       <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:orientation="vertical">
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:layout_marginTop="5dp"
+          android:layout_weight="1"
+          android:background="#55baeb">
 
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:background="#55baeb"
-             android:layout_weight="1">
+         <ImageView
+             android:layout_width="35dp"
+             android:layout_height="35dp"
+             android:layout_marginLeft="100dp"
+             android:layout_marginTop="22dp"
+             android:background="@drawable/ic_scan" />
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="22dp"
-                android:background="@drawable/ic_scan" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="33dp"
-                android:text="精彩生活"
-                android:textSize="15dp" />
-         </LinearLayout>
-
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="1sp"
-            android:background="@color/black"/>
-
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:layout_weight="1">
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginLeft="100dp"
-                android:background="@drawable/ic_life_circle"/>
-
-            </LinearLayout>
-
-
-         <LinearLayout
+         <TextView
              android:layout_width="match_parent"
              android:layout_height="60dp"
-             android:layout_weight="1" />
+             android:layout_marginLeft="25dp"
+             android:layout_marginTop="33dp"
+             android:text="精彩生活"
+             android:textSize="15dp" />
+      </LinearLayout>
 
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="60dp"
-             android:layout_weight="1"/>
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1sp"
+          android:background="@color/black" />
 
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="60dp"
-             android:layout_weight="1"/>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:layout_weight="1">
+
+         <ImageView
+             android:layout_width="35dp"
+             android:layout_height="35dp"
+             android:layout_marginLeft="100dp"
+             android:layout_marginTop="22dp"
+             android:background="@drawable/ic_life_circle" />
+
       </LinearLayout>
 
 
-   </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:layout_weight="1" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:layout_weight="1" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="10dp"
+          android:layout_weight="1" />
+   </LinearLayout>
 
 
-
-</LinearLayout>
+</RelativeLayout>
