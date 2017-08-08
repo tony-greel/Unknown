@@ -1,10 +1,14 @@
 package com.ljj.unknown.util;
 
+import android.util.Log;
+
 import com.ljj.unknown.bean.Friend;
 import com.ljj.unknown.bean.FriendInfo;
 import com.ljj.unknown.bean.User;
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import cn.bmob.v3.BmobBatch;
@@ -22,6 +26,8 @@ import cn.bmob.v3.listener.UpdateListener;
  */
 
 public class FriendUtil {
+
+
 
     /**
      * 朋友类信息处理网络加载回调监听
@@ -46,6 +52,8 @@ public class FriendUtil {
         friend.setFriend(friendUser);
         friend1.setFriend(BmobUser.getCurrentUser(User.class));
         List<BmobObject> friends= new ArrayList<>();
+        friends.add(friend);
+        friends.add(friend1);
         new BmobBatch().insertBatch(friends).doBatch(new QueryListListener<BatchResult>() {
             @Override
             public void done(List<BatchResult> list, BmobException e) {
@@ -58,7 +66,8 @@ public class FriendUtil {
                     if (e.getErrorCode() == 9016){
                         listener.onError("网络不给力");
                     }else {
-                        listener.onError(e.getMessage());
+                        listener.onError(e.getErrorCode()+"   "+e.getMessage());
+                        Log.i("TAG","你"+e.getMessage());
                     }
                 }
             }
@@ -73,6 +82,7 @@ public class FriendUtil {
     public static void saveFriendToLocal(String id,User friendUser){
         Connector.getDatabase();
         FriendInfo friendInfo = new FriendInfo();
+        friendInfo.setFriendInfoId(id);
         friendInfo.setUserId(BmobUser.getCurrentUser(User.class).getObjectId());
         friendInfo.setFriendId(friendUser.getObjectId());
         friendInfo.setFriendHead(friendUser.getHeadUrl());
@@ -96,19 +106,17 @@ public class FriendUtil {
     }
 
     /**
-     * 删除朋友记录信息（注意点：删除需要传入friend 对象的object id
-     * 所以需要先把FriendInfo中的friendInfoId赋值给这个friend中对应的object id）
-     * 这里不会自动删除本地的朋友信息，需要自行调用deleteLocalFriend方法删除本地
-     * 所对应的朋友信息
+     * 删除朋友记录信息,并删除本地数据库中对应的朋友信息
      * @param friend  朋友信息
      * @param listener 删除回调监听
      */
-    public static void deleteFriendInfo(Friend friend , final OnFriendDealListener listener){
+    public static void deleteFriendInfo(final Friend friend , final OnFriendDealListener listener){
         friend.delete(new UpdateListener() {
             @Override
             public void done(BmobException e) {
                 if ( e== null){
                     listener.onSuccess();
+                    deleteLocalFriend(friend.getObjectId());
                 }else {
                     if (e.getErrorCode() == 9016){
                         listener.onError("网络不给力");

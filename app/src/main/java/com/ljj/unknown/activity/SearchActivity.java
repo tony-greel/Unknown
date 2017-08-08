@@ -39,6 +39,7 @@ public class SearchActivity extends BaseActivity {
     TextView tvResultNickname;
     @Bind(R.id.tv_result_username)
     TextView tvResultUsername;
+    private User user;
 
 
     @Override
@@ -68,7 +69,7 @@ public class SearchActivity extends BaseActivity {
                             if (e == null) {
                                 if (list.size() > 0) {
                                     rlSearchResult.setVisibility(View.VISIBLE);
-                                    User user = list.get(0);
+                                    user = list.get(0);
                                     if (TextUtils.isEmpty(user.getHeadUrl())) {
                                         Glide.with(SearchActivity.this)
                                                 .load(R.drawable.ic_portrait_but)
@@ -97,8 +98,10 @@ public class SearchActivity extends BaseActivity {
                 break;
             case R.id.rl_search_result:
                 Intent intent = new Intent(this,PersonalInformation.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("friend",user);
+                intent.putExtras(bundle);
                 startActivity(intent);
-
                 break;
         }
     }

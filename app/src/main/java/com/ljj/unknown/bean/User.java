@@ -1,12 +1,14 @@
 package com.ljj.unknown.bean;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobUser;
 
 /**
  * Created by Administrator on 2017/7/30.
  */
 
-public class User extends BmobUser {
+public class User extends BmobUser implements Serializable{
     /**
      * 昵称
      */

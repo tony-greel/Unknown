@@ -5,6 +5,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ljj.unknown.R;
 import com.ljj.unknown.bean.User;
@@ -48,7 +49,20 @@ public class PersonalInformation extends BaseActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if(v == btnAddFriends){
+            showProgressDialog();
+            FriendUtil.addFriend((User)getIntent().getSerializableExtra("friend"), new FriendUtil.OnFriendDealListener() {
+                @Override
+                public void onSuccess() {
+                    dismiss();
+                    Toast.makeText(mActivity, "添加朋友成功!", Toast.LENGTH_SHORT).show();
+                }
 
+                @Override
+                public void onError(String error) {
+                    dismiss();
+                    Toast.makeText(mActivity, error, Toast.LENGTH_SHORT).show();
+                }
+            });
 
         }
     }
