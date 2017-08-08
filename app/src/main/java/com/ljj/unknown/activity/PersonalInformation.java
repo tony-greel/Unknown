@@ -49,7 +49,6 @@ public class PersonalInformation extends BaseActivity implements View.OnClickLis
     public void onClick(View v) {
         if(v == btnAddFriends){
 
-            FriendUtil.addFriend();
         }
     }
 }
