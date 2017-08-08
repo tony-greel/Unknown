@@ -9,6 +9,8 @@ import com.imnjh.imagepicker.SImagePicker;
 import com.ljj.unknown.other.GlideImageLoader;
 import com.zxy.tiny.Tiny;
 
+import org.litepal.LitePal;
+
 import cn.bmob.newim.BmobIM;
 import cn.bmob.v3.Bmob;
 
@@ -27,6 +29,7 @@ public class UnknownApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Bmob.initialize(this,"fe911a5b766eb904c5c717612157bc8b");
+        LitePal.initialize(this);
 //        BmobIM.init(this);
 //        BmobIM.registerDefaultMessageHandler(new UnknownMessageHandler());
 //        //压缩图片框架初始化
