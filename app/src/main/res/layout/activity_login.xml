@@ -118,9 +118,7 @@
         android:text="@string/but_login"
         android:textColor="@color/btu_login"
         android:layout_marginLeft="30dp"
-        android:layout_marginStart="27dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="470dp" />
 
     <Button
         android:id="@+id/register_but"
@@ -130,7 +128,7 @@
         android:text="@string/but_register"
         android:textColor="@color/btu_login"
         android:layout_marginLeft="193dp"
-        android:layout_marginTop="533dp"/>
+        android:layout_marginTop="470dp"/>
 
 
 

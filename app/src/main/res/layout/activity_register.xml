@@ -5,9 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.Toolbar
+        android:elevation="5dp"
+        android:id="@+id/tb_register"
+        android:layout_marginBottom="5dp"
+        android:background="@color/color_primary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+    </android.support.v7.widget.Toolbar>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_marginTop="60dp"
+        android:text="账号注册"
+        android:textSize="20dp"
+        android:textStyle="bold"
+       />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_register_account_nuber"/>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_register_password"/>
+
+        <EditText
+            android:id="@+id/et_register_username_account"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:hint="请输入账号"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/et_register_password"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:hint="请输入密码"
+            android:inputType="number"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center"/>
+
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_register_confirm_password"/>
+
+        <EditText
+            android:id="@+id/et_register_confirm_password"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:hint="请确认密码"
+            android:inputType="number"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="@color/green"
+        android:text="注册"
+        android:textColor="@color/btu_login" />
 
 
 </LinearLayout>
