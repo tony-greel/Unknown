@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ljj.unknown.R;
+import com.ljj.unknown.bean.User;
 import com.ljj.unknown.util.Microblogtools;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
@@ -95,8 +96,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         qqLong.setOnClickListener(this);
         microLong.setOnClickListener(this);
 
-        mAuthInfo = new AuthInfo(this, Microblogtools.APP_KEY, Microblogtools.REDIRECT_URL, Microblogtools.SCOPE);
-        mSsoHandler = new SsoHandler(this, mAuthInfo);
+//        mAuthInfo = new AuthInfo(this, Microblogtools.APP_KEY, Microblogtools.REDIRECT_URL, Microblogtools.SCOPE);
+//        mSsoHandler = new SsoHandler(this, mAuthInfo);
         mTencent = Tencent.createInstance(APP_ID, this.getApplicationContext());
 
         new Handler().postDelayed(new Runnable() {
@@ -214,18 +215,47 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         };
     }
 
+    User user;
+
+    public void thirdLogin(){
+        showProgressDialog();
+        user.signUp(new SaveListener<User>() {
+            @Override
+            public void done(User user1, BmobException e) {
+                if (e == null || e.getErrorCode() == 202){
+                    e=null;
+                    user.login(new SaveListener<User>() {
+                        @Override
+                        public void done(User user, BmobException e) {
+                            dismiss();
+                            if (e == null){
+                                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                finish();
+                            }else {
+                                Toast.makeText(LoginActivity.this, e.getErrorCode()+" "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }else {
+                    dismiss();
+                    Toast.makeText(LoginActivity.this, e.getErrorCode()+" "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     public class BaseUiListener implements IUiListener {
         @Override
         public void onComplete(Object response) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-            Log.e(TAG, "response:" + response.toString());
             JSONObject obj = (JSONObject) response;
             try {
                 String openID = obj.getString("openid");
                 String accessToken = obj.getString("access_token");
                 String expires = obj.getString("expires_in");
+                user= new User();
+                user.setUsername(openID);
+                user.setPassword("!@#$q432~wer&*432(CDE2/(ㄒoㄒ)/~~");
                 mTencent.setOpenId(openID);
                 mTencent.setAccessToken(accessToken, expires);
                 QQToken qqToken = mTencent.getQQToken();
@@ -234,8 +264,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     @Override
                     public void onComplete(Object response) {
                         try {
-                            Toast.makeText(LoginActivity.this, ((JSONObject) response).getString("figureurl_1"), Toast.LENGTH_SHORT).show();
 
+                            user.setNickname(((JSONObject) response).getString("nickname"));
+                            user.setSex(((JSONObject) response).getString("gender"));
+                            user.setAddress(((JSONObject) response).getString("province")+"-"+((JSONObject) response).getString("city"));
+                            user.setHeadUrl(((JSONObject) response).getString("figureurl_qq_2"));
+                            thirdLogin();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -6,11 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.ljj.unknown.R;
 import com.ljj.unknown.bean.User;
 import com.ljj.unknown.util.FriendUtil;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

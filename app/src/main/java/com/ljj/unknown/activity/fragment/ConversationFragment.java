@@ -44,7 +44,7 @@ public class ConversationFragment extends Fragment {
         srlConversation.setEnableLoadmore(false);
         srlConversation.setHeaderHeight(250);
         DeliveryHeader header = new DeliveryHeader(getActivity());
-        header.setPrimaryColors(getActivity().getColor(R.color.blue_balloon));
+//        header.setPrimaryColors(getActivity().getColor(R.color.blue_balloon));
         srlConversation.setRefreshHeader(header);
         return view;
     }

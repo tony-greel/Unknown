@@ -35,12 +35,12 @@ public class SplashActivity extends AppCompatActivity {
         User user = BmobUser.getCurrentUser(User.class);
         if(user != null){
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-            SplashActivity.this.startActivity(intent);
-            SplashActivity.this.finish();
+            startActivity(intent);
+            finish();
         }else {
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-            SplashActivity.this.startActivity(intent);
-            SplashActivity.this.finish();
+            startActivity(intent);
+            finish();
         }
     }
 }

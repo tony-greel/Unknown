@@ -134,7 +134,7 @@ public class FriendUtil {
      * @param listener  更新回调监听
      */
     public static void updateFriendInfo(User user, final OnFriendDealListener listener){
-        String userId = BmobUser.getCurrentUser(User.class).getObjectId();
+        String userId = user.getObjectId();
         for (FriendInfo friendInfo : DataSupport.findAll(FriendInfo.class)) {
             if (friendInfo.getUserId().equals(userId)){
                 friendInfo.delete();
