@@ -6,14 +6,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.ljj.unknown.R;
 import com.ljj.unknown.activity.fragment.ContactsFragment;
 import com.ljj.unknown.activity.fragment.ConversationFragment;
-import com.ljj.unknown.activity.fragment.PersonalFragment;
 import com.ljj.unknown.adapter.FragmentAdapter;
 
 import java.util.ArrayList;

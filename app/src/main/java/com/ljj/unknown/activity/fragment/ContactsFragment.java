@@ -9,9 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+
 import com.ljj.unknown.R;
 import com.ljj.unknown.adapter.ContractAdapter;
-import com.ljj.unknown.bean.FriendInfo;
+
 import com.ljj.unknown.bean.User;
 import com.ljj.unknown.util.FriendUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -20,12 +21,12 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.bmob.v3.BmobUser;
+
+
 
 /**
  * Created by Administrator on 2017/8/4.

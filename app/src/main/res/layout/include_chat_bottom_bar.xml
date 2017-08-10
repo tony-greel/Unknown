@@ -28,12 +28,35 @@
             android:hint="请输入新消息"
             android:background="@drawable/btn_login_background"/>
 
-        <ImageView
-            android:layout_gravity="center"
+        <Button
+            android:id="@+id/btn_chat_voice"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/ic_voice_chat"
+            android:layout_marginLeft="6dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_chat_voice_selector"
+            android:gravity="center"
+            android:textColor="@color/base_color_text_black" >
+        </Button>
+
+        <Button
+            android:id="@+id/btn_chat_keyboard"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:background="@drawable/btn_chat_keyboard_selector"
+            android:gravity="center"
+            android:textColor="@color/base_color_text_black" >
+        </Button>
+
+        <Button
+            android:id="@+id/btn_chat_send"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:background="@drawable/btn_chat_send_selector"
+            android:gravity="center"
             />
 
     </LinearLayout>
