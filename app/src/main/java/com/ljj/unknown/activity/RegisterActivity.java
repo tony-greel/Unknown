@@ -78,7 +78,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 @Override
                 public void done(BmobUser bmobUser, BmobException e) {
                     if(e == null){
-                        Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+                        Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
                         finish();
                         startActivity(intent);
                     }else if(e.getErrorCode() == 202){

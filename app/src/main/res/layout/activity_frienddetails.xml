@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray">
+
+    <android.support.v7.widget.Toolbar
+        android:elevation="5dp"
+        android:id="@+id/tb_friend_details"
+        android:layout_marginBottom="5dp"
+        android:background="@color/color_primary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="详细资料"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/btu_login"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_portrait_but"/>
+        <TextView
+            android:id="@+id/tv_friend_details_name"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="80dp"
+            android:text="小小明"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="130dp"
+            android:background="@mipmap/ic_launcher"/>
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="80dp"
+            android:text="尬聊ID:"
+            android:textSize="13dp" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="80dp"
+            android:text="昵称:"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_setup_friend_details"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/btu_login">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="设置备注和标签"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:orientation="vertical"
+        android:background="@color/btu_login"
+        android:layout_marginTop="25dp">
+
+        <LinearLayout
+            android:id="@+id/ll_region_friend_details"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:text="地区"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="@color/shallow" />
+
+        <LinearLayout
+            android:id="@+id/ll_album_friend_details"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:text="个人相册"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="@color/shallow" />
+
+        <LinearLayout
+            android:id="@+id/ll_more_friend_details"
+            android:layout_width="match_parent"
+            android:layout_height="34dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="更多"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="@color/shallow"
+            android:layout_marginTop="4dp"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_friend_details_message"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/btu_login"
+        android:text="发消息"
+        />
+
+
+</LinearLayout>

@@ -37,7 +37,6 @@ import org.json.JSONObject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import cn.bmob.newim.listener.AuthListener;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -79,6 +78,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private Oauth2AccessToken mAccessToken;
     private UsersAPI mUsersAPI;
 
+    public User thirdUser;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,8 +97,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         qqLong.setOnClickListener(this);
         microLong.setOnClickListener(this);
 
-//        mAuthInfo = new AuthInfo(this, Microblogtools.APP_KEY, Microblogtools.REDIRECT_URL, Microblogtools.SCOPE);
-//        mSsoHandler = new SsoHandler(this, mAuthInfo);
+        mAuthInfo = new AuthInfo(this, Microblogtools.APP_KEY, Microblogtools.REDIRECT_URL, Microblogtools.SCOPE);
+        mSsoHandler = new SsoHandler(this, mAuthInfo);
         mTencent = Tencent.createInstance(APP_ID, this.getApplicationContext());
 
         new Handler().postDelayed(new Runnable() {
@@ -162,8 +163,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         public void onComplete(Bundle bundle) {
             mAccessToken = Oauth2AccessToken.parseAccessToken(bundle);
             if (mAccessToken.isSessionValid()) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+
                 //获取用户具体信息
                 getUserInfo();
             } else {
@@ -187,13 +187,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
 
         private void getUserInfo() {
-            mUsersAPI = new UsersAPI(LoginActivity.this, Microblogtools.APP_KEY, mAccessToken);
-            System.out.println("mUsersAPI  ----->   " + mUsersAPI.toString());
-
             //调用接口
             long uid = Long.parseLong(mAccessToken.getUid());
-            System.out.println("--------------uid-------------->    " + uid);
-            mUsersAPI.show(uid, mListener);//将uid传递到listener中，通过uid在listener回调中接收到该用户的json格式的个人信息
+            new UsersAPI(LoginActivity.this, Constants.KEY_APP_NAME, mAccessToken)
+                    .show(uid, mListener);
         }
 
         //实现异步请求接口回调
@@ -202,6 +199,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             public void onComplete(String response) {
                 if (!TextUtils.isEmpty(response)) {
                     com.sina.weibo.sdk.openapi.models.User user = com.sina.weibo.sdk.openapi.models.User.parse(response);
+                    thirdUser = new User();
+                    thirdUser.setUsername(user.id);
+                    thirdUser.setHeadUrl(user.avatar_hd);
+                    thirdUser.setSex(user.gender);
+                    thirdUser.setAddress(user.province +"-"+ user.city);
+                    thirdUser.setPassword("123456");
+                    thirdUser.setNickname(user.screen_name);
+                    thirdUserLogin();
                     String nickName = user.screen_name;
                     Toast.makeText(LoginActivity.this, "用户昵称：" + nickName.toString(), Toast.LENGTH_SHORT).show();
                 }
@@ -215,16 +220,43 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         };
     }
 
-    User user;
+    public void thirdUserLogin(){
+        showProgressDialog();
+        thirdUser.signUp(new SaveListener<User>() {
+            @Override
+            public void done(User user, BmobException e) {
+                if(e == null || e.getErrorCode() == 202){
+                    e=null;
+                    thirdUser.login(new SaveListener<User>() {
+                        @Override
+                        public void done(User user, BmobException e) {
+                            dismiss();
+                            if(e == null){
+                                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                finish();
+                            }else{
+                                Toast.makeText(LoginActivity.this, e.getErrorCode()+" "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }else{
+                    dismiss();
+                    Toast.makeText(LoginActivity.this, e.getErrorCode()+" "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 
     public void thirdLogin(){
         showProgressDialog();
-        user.signUp(new SaveListener<User>() {
+        thirdUser.signUp(new SaveListener<User>() {
             @Override
             public void done(User user1, BmobException e) {
                 if (e == null || e.getErrorCode() == 202){
                     e=null;
-                    user.login(new SaveListener<User>() {
+                    thirdUser.login(new SaveListener<User>() {
                         @Override
                         public void done(User user, BmobException e) {
                             dismiss();
@@ -253,9 +285,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 String openID = obj.getString("openid");
                 String accessToken = obj.getString("access_token");
                 String expires = obj.getString("expires_in");
-                user= new User();
-                user.setUsername(openID);
-                user.setPassword("!@#$q432~wer&*432(CDE2/(ㄒoㄒ)/~~");
+                thirdUser= new User();
+                thirdUser.setUsername(openID);
+                thirdUser.setPassword("!@#$q432~wer&*432(CDE2/(ㄒoㄒ)/~~");
                 mTencent.setOpenId(openID);
                 mTencent.setAccessToken(accessToken, expires);
                 QQToken qqToken = mTencent.getQQToken();
@@ -264,11 +296,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     @Override
                     public void onComplete(Object response) {
                         try {
-
-                            user.setNickname(((JSONObject) response).getString("nickname"));
-                            user.setSex(((JSONObject) response).getString("gender"));
-                            user.setAddress(((JSONObject) response).getString("province")+"-"+((JSONObject) response).getString("city"));
-                            user.setHeadUrl(((JSONObject) response).getString("figureurl_qq_2"));
+                            thirdUser.setNickname(((JSONObject) response).getString("nickname"));
+                            thirdUser.setSex(((JSONObject) response).getString("gender"));
+                            thirdUser.setAddress(((JSONObject) response).getString("province")+"-"+((JSONObject) response).getString("city"));
+                            thirdUser.setHeadUrl(((JSONObject) response).getString("figureurl_qq_2"));
                             thirdLogin();
                         } catch (JSONException e) {
                             e.printStackTrace();

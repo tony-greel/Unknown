@@ -14,7 +14,7 @@
             android:layout_width="@dimen/item_head_length"
             android:layout_height="@dimen/item_head_length" />
         <LinearLayout
-            android:background="@drawable/left_bubble"
+            android:background="o@drawable/left_bubble"
             android:id="@+id/ll_image_left"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
