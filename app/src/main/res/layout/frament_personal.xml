@@ -1,107 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:background="#efefef"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/blue_balloon">
+    android:layout_height="match_parent">
 
-
-   <de.hdodenhof.circleimageview.CircleImageView
-       android:layout_width="100dp"
-       android:layout_height="100dp"
-       android:layout_marginTop="50dp"
-       android:layout_marginLeft="135dp"
-       android:src="@drawable/ic_portrait_but"
-       android:id="@+id/circleImageView" />
-
-   <TextView
-       android:id="@+id/tv_signature_personal"
-       android:gravity="center"
+   <RelativeLayout
+       android:id="@+id/rl_personal_info"
+       android:clickable="true"
+       android:background="@drawable/item_message_selector"
+       android:layout_marginTop="15dp"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/circleImageView"
-       android:layout_marginTop="3dp"
-       android:text="name"
-       android:textSize="20dp"
-       />
+       android:layout_height="70dp">
+      <ImageView
+          android:src="@drawable/pig"
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="10dp"
+          android:layout_width="54dp"
+          android:layout_height="54dp" />
+      <TextView
+          android:id="@+id/tv_nickname"
+          android:ellipsize="end"
+          android:maxLines="1"
+          android:layout_marginRight="100dp"
+          android:layout_marginTop="13dp"
+          android:layout_marginLeft="85dp"
+          android:textSize="16sp"
+          android:textColor="@color/share_text"
+          android:text="猪头"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+      <TextView
+          android:id="@+id/tv_username"
+          android:ellipsize="end"
+          android:maxLines="1"
+          android:layout_marginRight="100dp"
+          android:layout_marginTop="40dp"
+          android:textSize="14sp"
+          android:layout_marginLeft="85dp"
+          android:text="账号：hyc875224980"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+      <ImageView
+          android:id="@+id/iv_scan_code"
+          android:layout_marginRight="20dp"
+          android:layout_centerVertical="true"
+          android:layout_alignParentRight="true"
+          android:src="@drawable/scan"
+          android:layout_width="25dp"
+          android:layout_height="25dp" />
+   </RelativeLayout>
 
-   <TextView
+   <RelativeLayout
+       android:id="@+id/rl_album"
+       android:layout_marginTop="@dimen/dp_22"
+       android:clickable="true"
+       android:background="@drawable/item_message_selector"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/tv_signature_personal"
-       android:layout_marginLeft="80dp"
-       android:text="qianm"
-       android:textSize="15dp"
-       />
-
-
-   <LinearLayout
+       android:layout_height="45dp">
+      <ImageView
+          android:src="@drawable/album"
+          android:layout_marginLeft="10dp"
+          android:layout_centerVertical="true"
+          android:layout_width="25dp"
+          android:layout_height="25dp" />
+      <TextView
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="55dp"
+          android:textColor="@color/share_text"
+          android:textSize="14sp"
+          android:text="相册"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+   </RelativeLayout>
+   <View
        android:layout_width="match_parent"
-       android:layout_height="400dp"
-       android:layout_marginTop="67dp"
-       android:orientation="vertical"
-       android:layout_below="@+id/circleImageView"
-       android:background="@color/btu_login">
+       android:layout_height="1px"
+      android:background="#d7d7d7"/>
+   <RelativeLayout
+       android:id="@+id/rl_life"
+       android:clickable="true"
+       android:background="@drawable/item_message_selector"
+       android:layout_width="match_parent"
+       android:layout_height="45dp">
+      <ImageView
+          android:src="@drawable/life"
+          android:layout_marginLeft="10dp"
+          android:layout_centerVertical="true"
+          android:layout_width="25dp"
+          android:layout_height="25dp" />
+      <TextView
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="55dp"
+          android:textColor="@color/share_text"
+          android:textSize="14sp"
+          android:text="朋友圈"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+   </RelativeLayout>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1px"
+       android:background="#d7d7d7"/>
+   <RelativeLayout
+       android:id="@+id/rl_feedback"
+       android:clickable="true"
+       android:background="@drawable/item_message_selector"
+       android:layout_width="match_parent"
+       android:layout_height="45dp">
+      <ImageView
+          android:src="@drawable/feedback"
+          android:layout_marginLeft="10dp"
+          android:layout_centerVertical="true"
+          android:layout_width="25dp"
+          android:layout_height="25dp" />
+      <TextView
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="55dp"
+          android:textColor="@color/share_text"
+          android:textSize="14sp"
+          android:text="反馈"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+   </RelativeLayout>
 
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="20dp"
-          android:layout_marginTop="5dp"
-          android:layout_weight="1"
-          android:background="#55baeb">
-
-         <ImageView
-             android:layout_width="35dp"
-             android:layout_height="35dp"
-             android:layout_marginLeft="100dp"
-             android:layout_marginTop="22dp"
-             android:background="@drawable/ic_scan" />
-
-         <TextView
-             android:layout_width="match_parent"
-             android:layout_height="60dp"
-             android:layout_marginLeft="25dp"
-             android:layout_marginTop="33dp"
-             android:text="精彩生活"
-             android:textSize="15dp" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="1sp"
-          android:background="@color/black" />
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="20dp"
-          android:layout_weight="1">
-
-         <ImageView
-             android:layout_width="35dp"
-             android:layout_height="35dp"
-             android:layout_marginLeft="100dp"
-             android:layout_marginTop="22dp"
-             android:background="@drawable/ic_life_circle" />
-
-      </LinearLayout>
+   <RelativeLayout
+       android:id="@+id/rl_setting"
+       android:layout_marginTop="@dimen/dp_22"
+       android:clickable="true"
+       android:background="@drawable/item_message_selector"
+       android:layout_width="match_parent"
+       android:layout_height="45dp">
+      <ImageView
+          android:src="@drawable/setting"
+          android:layout_marginLeft="10dp"
+          android:layout_centerVertical="true"
+          android:layout_width="25dp"
+          android:layout_height="25dp" />
+      <TextView
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="55dp"
+          android:textColor="@color/share_text"
+          android:textSize="14sp"
+          android:text="设置"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+   </RelativeLayout>
 
 
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="20dp"
-          android:layout_weight="1" />
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="20dp"
-          android:layout_weight="1" />
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="10dp"
-          android:layout_weight="1" />
-   </LinearLayout>
-
-
-</RelativeLayout>
+</LinearLayout>

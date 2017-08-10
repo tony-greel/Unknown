@@ -1,5 +1,9 @@
 package com.ljj.unknown.adapter;
 
+import android.text.TextUtils;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.ljj.unknown.R;
@@ -19,9 +23,20 @@ public class ContractAdapter extends BaseQuickAdapter<FriendInfo>{
 
     @Override
     protected void convert(BaseViewHolder baseViewHolder, FriendInfo friendInfo) {
-//        Glide.with(mContext)
-//                .load(friendInfo.getFriendHead())
-//                .into((ImageView) baseViewHolder.getView(R.id.iv_item_friend_head));
-//        baseViewHolder.setText(R.id.tv_item_friend_nickname,friendInfo.getFriendNickname());
+        if (TextUtils.isEmpty(friendInfo.getFriendHead())){
+            Glide.with(mContext)
+                    .load(R.drawable.ic_portrait_but)
+                    .into((ImageView) baseViewHolder.getView(R.id.iv_item_friend_head));
+        }else {
+            Glide.with(mContext)
+                    .load(friendInfo.getFriendHead())
+                    .into((ImageView) baseViewHolder.getView(R.id.iv_item_friend_head));
+        }
+        if (TextUtils.isEmpty(friendInfo.getFriendNickname())){
+            baseViewHolder.setText(R.id.tv_item_friend_nickname,friendInfo.getFriendUsername());
+        }else {
+            baseViewHolder.setText(R.id.tv_item_friend_nickname,friendInfo.getFriendNickname());
+        }
+
     }
 }

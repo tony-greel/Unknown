@@ -11,7 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64'
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'x86'
         }
     }
 
@@ -37,10 +37,15 @@ dependencies {
         exclude group: 'com.android.support'
     })
     compile 'com.yalantis:phoenix:1.2.3'
+    compile files('libs/mta-sdk-1.6.2.jar')
+    compile files('libs/open_sdk_r5788_lite.jar')
+    compile files('libs/weibosdk.jar')
+    compile files('libs/weiboSDKCore_3.1.4.jar')
+    compile files('libs/core-3.1.0.jar')
+    compile 'com.yalantis:phoenix:1.2.3'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'cn.bmob.android:bmob-im:2.0.6@aar'
-    compile 'com.yalantis:phoenix:1.2.3'
     compile 'cn.bmob.android:bmob-sdk:3.5.5'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
@@ -57,8 +62,4 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
     compile 'org.litepal.android:core:1.5.1'
     testCompile 'junit:junit:4.12'
-    compile files('libs/mta-sdk-1.6.2.jar')
-    compile files('libs/open_sdk_r5788_lite.jar')
-    compile files('libs/weibosdk.jar')
-    compile files('libs/weiboSDKCore_3.1.4.jar')
 }

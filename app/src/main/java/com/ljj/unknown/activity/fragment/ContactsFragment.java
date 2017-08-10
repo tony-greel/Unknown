@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ljj.unknown.R;
 import com.ljj.unknown.adapter.ContractAdapter;
@@ -46,30 +47,32 @@ public class ContactsFragment extends Fragment {
         ButterKnife.bind(this, view);
         srlContracts.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-//                FriendUtil.updateFriendInfo(BmobUser.getCurrentUser(User.class), new FriendUtil.OnFriendDealListener() {
-//                    @Override
-//                    public void onSuccess() {
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(String error) {
-//
-//                    }
-//                });
-                refreshlayout.finishRefresh(2000);
+            public void onRefresh(final RefreshLayout refreshlayout) {
+                FriendUtil.updateFriendInfo(BmobUser.getCurrentUser(User.class), new FriendUtil.OnFriendDealListener() {
+                    @Override
+                    public void onSuccess() {
+                        load();
+                        refreshlayout.finishRefresh();
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        refreshlayout.finishRefresh();
+                        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         srlContracts.setHeaderHeight(250);
-        List<FriendInfo> list = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            list.add(new FriendInfo());
-        }
-        contractAdapter = new ContractAdapter(list);
+        contractAdapter = new ContractAdapter(null);
         rvContracts.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvContracts.setAdapter(contractAdapter);
+        load();
         return view;
+    }
+
+    public void load(){
+        contractAdapter.setNewData(FriendUtil.getFriendInfo(BmobUser.getCurrentUser(User.class)));
     }
 
     @Override

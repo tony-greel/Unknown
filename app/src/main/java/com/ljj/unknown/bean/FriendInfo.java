@@ -10,7 +10,7 @@ public class FriendInfo extends DataSupport{
     /**
      * 本地数据库中对应的id
      */
-    private String id;
+    private int id;
     /**
      * 云端数据库中所对应的object id
      */
@@ -76,11 +76,11 @@ public class FriendInfo extends DataSupport{
         this.friendHead = friendHead;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

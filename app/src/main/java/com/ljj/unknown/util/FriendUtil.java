@@ -1,7 +1,9 @@
 package com.ljj.unknown.util;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import com.ljj.unknown.UnknownApplication;
 import com.ljj.unknown.bean.Friend;
 import com.ljj.unknown.bean.FriendInfo;
 import com.ljj.unknown.bean.User;
@@ -26,8 +28,6 @@ import cn.bmob.v3.listener.UpdateListener;
  */
 
 public class FriendUtil {
-
-
 
     /**
      * 朋友类信息处理网络加载回调监听
@@ -88,7 +88,9 @@ public class FriendUtil {
         friendInfo.setFriendHead(friendUser.getHeadUrl());
         friendInfo.setFriendNickname(friendUser.getNickname());
         friendInfo.setFriendUsername(friendUser.getUsername());
-        friendInfo.save();
+        if (!friendInfo.save()){
+            Toast.makeText(UnknownApplication.getContext(), "保存失败", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -133,13 +135,7 @@ public class FriendUtil {
      * @param user  对应的当前用户
      * @param listener  更新回调监听
      */
-    public static void updateFriendInfo(User user, final OnFriendDealListener listener){
-        String userId = user.getObjectId();
-        for (FriendInfo friendInfo : DataSupport.findAll(FriendInfo.class)) {
-            if (friendInfo.getUserId().equals(userId)){
-                friendInfo.delete();
-            }
-        }
+    public static void updateFriendInfo(final User user, final OnFriendDealListener listener){
         BmobQuery<Friend> query = new BmobQuery<>();
         query.addWhereEqualTo("user",user);
         query.include("friend");
@@ -147,9 +143,16 @@ public class FriendUtil {
             @Override
             public void done(List<Friend> list, BmobException e) {
                 if (e == null){
+                    String userId = user.getObjectId();
+                    for (FriendInfo friendInfo : DataSupport.findAll(FriendInfo.class)) {
+                        if (friendInfo.getUserId().equals(userId)){
+                            friendInfo.delete();
+                        }
+                    }
                     for (Friend friend : list) {
                         saveFriendToLocal(friend.getObjectId(),friend.getFriend());
                     }
+                    Log.i("测试","数量"+list.size());
                     listener.onSuccess();
                 }else{
                     if (e.getErrorCode() == 9016){
@@ -169,7 +172,9 @@ public class FriendUtil {
      */
     public static List<FriendInfo> getFriendInfo(User user){
         List<FriendInfo> friends = new ArrayList<>();
+//        Log.i("测试","加载本地数据"+DataSupport.findAll(FriendInfo.class).size());
         for (FriendInfo friendInfo : DataSupport.findAll(FriendInfo.class)) {
+
             if (friendInfo.getUserId().equals(user.getObjectId())){
                 friends.add(friendInfo);
             }
