@@ -47,6 +47,7 @@
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.PersonalInformation" />
         <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.ChatActivity"/>
 
         <!-- 开放平台获取的APPID -->
         <activity

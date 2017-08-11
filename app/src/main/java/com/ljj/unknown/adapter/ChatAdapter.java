@@ -21,6 +21,7 @@ import com.ljj.unknown.util.NetworkState;
 import java.io.IOException;
 import java.util.List;
 
+import cn.bmob.newim.BmobIM;
 import cn.bmob.newim.bean.BmobIMMessage;
 import cn.bmob.v3.BmobUser;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -240,6 +241,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             rl_text_left = (RelativeLayout) itemView.findViewById(R.id.rl_text_left);
             rl_text_right = (RelativeLayout) itemView.findViewById(R.id.rl_text_right);
             iv_text_fail = (ImageView) itemView.findViewById(R.id.iv_fail);
+            BmobIM.getInstance().loadAllConversation();
         }
     }
 

@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import com.ljj.unknown.R;
 import com.ljj.unknown.activity.fragment.ContactsFragment;
 import com.ljj.unknown.activity.fragment.ConversationFragment;
+import com.ljj.unknown.activity.fragment.PersonalFragment;
 import com.ljj.unknown.adapter.FragmentAdapter;
+import com.ljj.unknown.util.ImUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.newim.BmobIM;
 
 public class MainActivity extends FragmentActivity {
 
@@ -90,6 +93,8 @@ public class MainActivity extends FragmentActivity {
 
             }
         });
+        ImUtil.connectServer();
+
     }
 
     @OnClick({R.id.ll_bottom_menu_conversation, R.id.ll_bottom_menu_contacts, R.id.ll_bottom_menu_personal, R.id.iv_add_friend})

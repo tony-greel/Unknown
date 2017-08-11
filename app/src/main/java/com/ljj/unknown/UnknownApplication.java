@@ -29,7 +29,6 @@ public class UnknownApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Bmob.initialize(this,"fe911a5b766eb904c5c717612157bc8b");
-
         LitePal.initialize(this);
         BmobIM.init(this);
         BmobIM.registerDefaultMessageHandler(new UnknownMessageHandler());
