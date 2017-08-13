@@ -97,8 +97,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }
         if (v == ivPersonal) {
-            if (baseActivity.getStorage()) {
-            } else {
+            if (baseActivity.getStorage() && baseActivity.getCcamra()) {
                 SImagePicker
                         .from(getActivity())
                         .pickMode(SImagePicker.MODE_AVATAR)
@@ -107,7 +106,6 @@ public class PersonalFragment extends Fragment implements View.OnClickListener {
                                 CacheManager.getInstance().getImageInnerCache()
                                         .getAbsolutePath(AVATAR_FILE_NAME))
                         .forResult(REQUEST_CODE_AVATAR);
-                return;
             }
         }
     }

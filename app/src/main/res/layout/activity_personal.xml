@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ljj.unknown.activity.PersonalActivity">
-
+    android:orientation="vertical"
+    android:background="#e4e4e4"
+>
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_scan"
         android:background="@color/color_primary"
@@ -19,5 +19,151 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:background="@color/base_bg"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:text="头像"
+                android:textSize="20dp"
+                android:textColor="@color/color_1e1e1e"/>
+
+            <ImageView
+                android:id="@+id/iv_personal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="220dp"
+                android:background="@drawable/ic_portrait_but"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="#e2e2e2"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:text="名字"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:text="名字"
+                android:textSize="15dp"
+                android:textColor="#686868"
+                android:layout_marginLeft="230dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="#e2e2e2"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:text="尬聊号"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:text="11111111111"
+                android:textSize="15dp"
+                android:textColor="#686868"
+                android:layout_marginLeft="180dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="#e2e2e2"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:text="我的二维码"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:layout_marginLeft="15dp"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="187dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="#e2e2e2"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:text="更多"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="#e2e2e2"
+        />
+
 
 </LinearLayout>
