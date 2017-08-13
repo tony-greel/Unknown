@@ -298,6 +298,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             thirdUser.setSex(((JSONObject) response).getString("gender"));
                             thirdUser.setAddress(((JSONObject) response).getString("province")+"-"+((JSONObject) response).getString("city"));
                             thirdUser.setHeadUrl(((JSONObject) response).getString("figureurl_qq_2"));
+
                             thirdLogin();
                         } catch (JSONException e) {
                             e.printStackTrace();

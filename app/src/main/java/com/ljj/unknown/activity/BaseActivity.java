@@ -240,12 +240,13 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    public void getRecord(){
+    public boolean getRecord(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 1);
+            return false;
         } else {
-            return;
+            return true;
         }
     }
 

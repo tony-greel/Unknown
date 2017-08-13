@@ -47,7 +47,7 @@
     <color name="c7c7">#c7c7c7</color>
     <color name="white">#FFFFFF</color>
     <!--zxing-->
-    <color name="gray">#808080</color>
+    <color name="gray">#f1f1f1</color>
     <color name="lightgreen">#99CC33</color>
     <color name="green">#00CC00</color>
     <color name="group_list_gray">#999999</color>

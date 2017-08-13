@@ -65,6 +65,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             case TEXT:
                 return new TextMessageHolder(LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.item_text_message,parent,false));
+
             case IMAGE:
                 return new ImageMessageHolder(LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.item_image_message,parent,false));

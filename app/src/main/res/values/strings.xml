@@ -17,5 +17,7 @@
     <string name="close">关灯</string>
     <string name="open">开灯</string>
     <string name="not_scan">无法识别</string>
+    <string name="voice_up_tips">手指上滑,取消发送</string>
+    <string name="voice_cancel_tips">松开手指，取消发送</string>
     <string name="scan_info_text">扫一扫二维码，加我关注</string>
 </resources>

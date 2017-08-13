@@ -34,6 +34,8 @@ public class User extends BmobUser implements Serializable{
      */
     private String introduction;
 
+
+
     public String getAddress() {
         return address;
     }
@@ -81,4 +83,5 @@ public class User extends BmobUser implements Serializable{
     public void setSex(String sex) {
         this.sex = sex;
     }
+
 }

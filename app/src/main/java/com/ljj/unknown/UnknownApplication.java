@@ -39,6 +39,5 @@ public class UnknownApplication extends Application {
                 .setImageLoader(new GlideImageLoader())
                 .setToolbaseColor(Color.parseColor("#108de8"))
                 .build());
-
     }
 }

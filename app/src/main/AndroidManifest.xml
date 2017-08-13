@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+
     <application
         android:name=".UnknownApplication"
         android:allowBackup="true"
@@ -47,7 +48,8 @@
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.PersonalInformation" />
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.ChatActivity"/>
+        <activity android:name=".activity.ChatActivity" />
+        <activity android:name=".activity.FeedbackActivity" />
 
         <!-- 开放平台获取的APPID -->
         <activity
@@ -63,7 +65,7 @@
                 <data android:scheme="tencent1106172269" />
             </intent-filter>
         </activity>
-        <activity android:name=".zxing.CaptureActivity"/>
+        <activity android:name=".zxing.CaptureActivity" />
 
         <!-- QQ开放平台 -->
         <activity
@@ -94,7 +96,8 @@
         <service android:name="cn.bmob.newim.core.service.ReConnectService" />
         <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
 
-        <activity android:name=".activity.ScanActivity"></activity>
+        <activity android:name=".activity.ScanActivity" />
+        <activity android:name=".activity.PersonalActivity"></activity>
     </application>
 
 </manifest>
