@@ -61,6 +61,7 @@ dependencies {
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.github.valuesfeng:androidpicturepicker:1.0.0'
     compile 'com.zxy.android:tiny:0.0.7'
+    compile 'com.sackcentury:shinebutton:0.1.9'
     compile 'com.android.support:design:25.3.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.dou361.dialogui:jjdxm-dialogui:1.0.3'
@@ -68,5 +69,6 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.1'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
     compile 'org.litepal.android:core:1.5.1'
+    compile 'com.android.support:cardview-v7:21.0.2'
     testCompile 'junit:junit:4.12'
 }

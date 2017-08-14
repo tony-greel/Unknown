@@ -8,6 +8,7 @@ import cn.bmob.newim.BmobIM;
 import cn.bmob.newim.core.ConnectionStatus;
 import cn.bmob.newim.listener.ConnectListener;
 import cn.bmob.newim.listener.ConnectStatusChangeListener;
+import cn.bmob.newim.listener.FileDownloadListener;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 
@@ -22,6 +23,8 @@ public class ImUtil {
      */
     public static boolean isConnected = false;
 
+    public static boolean hadError = false;
+
     public static void connectServer(){
         initConnectListener();
         if (BmobUser.getCurrentUser(User.class) == null){
@@ -31,9 +34,29 @@ public class ImUtil {
             @Override
             public void done(String s, BmobException e) {
                 if (e == null){
-                    Log.i("TAG","服务器连接成功");
+                    hadError = false;
                 }else {
-                    Log.i("连接",e.getMessage()+"  "+e.getErrorCode());
+                    hadError = true;
+                }
+            }
+        });
+
+    }
+
+    public static void connectServer(final FriendUtil.OnFriendDealListener listener){
+        initConnectListener();
+        if (BmobUser.getCurrentUser(User.class) == null){
+            return;
+        }
+        BmobIM.connect(BmobUser.getCurrentUser(User.class).getObjectId(), new ConnectListener() {
+            @Override
+            public void done(String s, BmobException e) {
+                if (e == null){
+                    listener.onSuccess();
+                    hadError = false;
+                }else {
+                    listener.onError(e.getMessage());
+                    hadError = true;
                 }
             }
         });

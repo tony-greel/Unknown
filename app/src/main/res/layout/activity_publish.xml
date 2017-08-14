@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ljj.unknown.activity.PublishActivity"
+    android:orientation="vertical">
+    
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_publish"
+        android:elevation="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/color_primary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:text="发布"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+    <EditText
+        android:id="@+id/et_content"
+        android:paddingTop="5dp"
+        android:textColor="@color/share_text"
+        android:gravity="fill_horizontal"
+        android:hint="说出你此刻心中的想法..."
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="15sp"
+        android:background="#f1f1f1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/publish_content_height"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_publish_image"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

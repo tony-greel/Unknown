@@ -22,7 +22,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
         android:name=".UnknownApplication"
         android:allowBackup="true"
@@ -49,7 +48,6 @@
         <activity android:name=".activity.PersonalInformation" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ChatActivity" />
-        <activity android:name=".activity.FeedbackActivity" />
 
         <!-- 开放平台获取的APPID -->
         <activity
@@ -93,11 +91,14 @@
         <service
             android:name="cn.bmob.newim.core.service.NotifyService"
             android:process=":bmobcore" />
-        <service android:name="cn.bmob.newim.core.service.ReConnectService" />
+        <service android:name="cn.bmob.newim.core.service.ReConnectService"/>
         <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
 
         <activity android:name=".activity.ScanActivity" />
-        <activity android:name=".activity.PersonalActivity"></activity>
+         <activity
+             android:configChanges="keyboardHidden|orientation"
+             android:name=".activity.LifeCircleActivity"/>
+        <activity android:name=".activity.PublishActivity"/>
     </application>
 
 </manifest>

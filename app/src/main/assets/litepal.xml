@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value="ga" ></dbname>
-    <version value="2" ></version>
+    <version value="3" ></version>
     <list>
         <mapping class="com.ljj.unknown.bean.FriendInfo"></mapping>
+        <mapping class="com.ljj.unknown.bean.LikeRecord"></mapping>
+
     </list>
 </litepal>

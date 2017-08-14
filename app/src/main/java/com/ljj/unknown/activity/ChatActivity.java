@@ -103,10 +103,7 @@ public class ChatActivity extends BaseActivity {
 
     private ChatAdapter adapter;
 
-    public static final String AVATAR_FILE_NAME = "avatar.png";
     public static final int REQUEST_CODE_IMAGE = 101;
-
-    public static final int REQUEST_CODE_AVATAR = 100;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -117,9 +114,11 @@ public class ChatActivity extends BaseActivity {
         ButterKnife.bind(this);
         if (ImUtil.isConnected) {
             conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), (BmobIMConversation) getIntent().getSerializableExtra("ljj"));
+            tvChatName.setText(conversation.getConversationTitle());
         }
         initVoice();
         etChat.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 

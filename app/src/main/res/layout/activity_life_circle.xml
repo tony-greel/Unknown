@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            <RelativeLayout
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/pig"
+                    app:layout_collapseMode="parallax"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/iv_life_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="225dp" />
+                <RelativeLayout
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp">
+
+                    <View
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"/>
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:src="@drawable/pig"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:layout_marginTop="15dp"
+                android:id="@+id/tb_life_circle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_height"
+                app:layout_collapseMode="pin" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/srl_life"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:background="@color/white"
+            android:id="@+id/rv_life"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

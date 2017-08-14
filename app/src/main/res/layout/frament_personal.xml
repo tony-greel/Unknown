@@ -7,9 +7,8 @@
     android:layout_height="match_parent">
 
    <RelativeLayout
+       android:background="@color/white"
        android:id="@+id/rl_personal_info"
-       android:clickable="true"
-       android:background="@drawable/item_message_selector"
        android:layout_marginTop="15dp"
        android:layout_width="match_parent"
        android:layout_height="70dp">

@@ -6,6 +6,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import com.ljj.unknown.R;
 import com.ljj.unknown.bean.User;
+
+import org.litepal.tablemanager.Connector;
+
 import cn.bmob.v3.BmobUser;
 
 /**
@@ -20,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        Connector.getDatabase();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

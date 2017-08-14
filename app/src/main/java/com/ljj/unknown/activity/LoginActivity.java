@@ -69,13 +69,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private Tencent mTencent;
     public BaseUiListener mIUiListener;
     private UserInfo mUserInfo;
-
-
     private SsoHandler mSsoHandler;
     private AuthInfo mAuthInfo;
     private Oauth2AccessToken mAccessToken;
     private UsersAPI mUsersAPI;
-
     public User thirdUser;
 
 
@@ -94,9 +91,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         registerBut.setOnClickListener(this);
         qqLong.setOnClickListener(this);
         microLong.setOnClickListener(this);
-
-        mAuthInfo = new AuthInfo(this, Microblogtools.APP_KEY, Microblogtools.REDIRECT_URL, Microblogtools.SCOPE);
-        mSsoHandler = new SsoHandler(this, mAuthInfo);
+//        mAuthInfo = new AuthInfo(this, Microblogtools.APP_KEY, Microblogtools.REDIRECT_URL, Microblogtools.SCOPE);
+//        mSsoHandler = new SsoHandler(this, mAuthInfo);
         mTencent = Tencent.createInstance(APP_ID, this.getApplicationContext());
 
         new Handler().postDelayed(new Runnable() {
@@ -110,17 +106,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        if (v == longBut) {
-
+        if (v.getId() == R.id.long_but) {
             String name = etLoginUsername.getText().toString();
             String password = etLoginPassword.getText().toString();
-
             if (name.equals("") || password.equals("")) {
                 Toast.makeText(LoginActivity.this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
                 return;
             }
             showProgressDialog();
-
             BmobUser user = new BmobUser();
             user.setUsername(name);
             user.setPassword(password);
@@ -140,18 +133,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             dismiss();
         }
 
-        if (v == registerBut) {
+        if (v.getId() == R.id.register_but) {
             Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
         }
 
-        if (v == qqLong) {
+        if (v.getId() == R.id.qq_long) {
             mIUiListener = new BaseUiListener();
             //all表示获取所有权限
             mTencent.login(LoginActivity.this, "all", mIUiListener);
         }
 
-        if(v == microLong){
+        if(v.getId() == R.id.micro_long){
             mSsoHandler.authorize(new AuthListener());
         }
     }

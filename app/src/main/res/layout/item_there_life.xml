@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cv_life_head"
+                android:layout_marginLeft="10dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+            <TextView
+                android:id="@+id/tv_life_item_nickname"
+                android:layout_marginLeft="9dp"
+                android:textColor="@color/share_text"
+                android:textSize="15sp"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@id/cv_life_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_life_item_time"
+                android:layout_marginLeft="9dp"
+                android:textSize="13sp"
+                android:layout_marginTop="27dp"
+                android:layout_toRightOf="@id/cv_life_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_life_item_content"
+            android:textSize="13sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/share_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="138dp">
+            <ImageView
+                android:id="@+id/iv_life_item_image1"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <View
+                android:layout_width="2dp"
+                android:background="@color/white"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/iv_life_item_image2"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <View
+                android:layout_width="2dp"
+                android:background="@color/white"
+                android:layout_height="match_parent"/>
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/iv_life_item_image3"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/tv_life_image_count"
+                    android:background="#96797979"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:text="+4"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_life_item_comment"
+            android:lineSpacingExtra="5dp"
+            android:textSize="12sp"
+            android:textColor="@color/share_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elegantTextHeight="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/life_comment_background"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" >
+            <EditText
+                android:id="@+id/et_life_item_comment"
+                android:maxLines="1"
+                android:layout_marginLeft="5dp"
+                android:textSize="13sp"
+                android:hint="评论"
+                android:layout_marginRight="40dp"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:id="@+id/sb_life"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@android:color/darker_gray"
+                app:btn_color="@android:color/darker_gray"
+                app:btn_fill_color="@android:color/holo_blue_dark"
+                app:allow_random_color="true"
+                app:siShape="@raw/like"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <android.support.v7.widget.CardView
+        app:cardElevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <View
+        android:background="@color/going_unfinsh_color"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"/>
+</LinearLayout>
