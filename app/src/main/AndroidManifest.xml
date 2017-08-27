@@ -48,6 +48,9 @@
         <activity android:name=".activity.PersonalInformation" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ChatActivity" />
+        <activity android:name=".activity.PersonalActivity" />
+        <activity android:name=".activity.FeedbackActivity" />
+        <activity android:name=".activity.AlbumActivity" />
 
         <!-- 开放平台获取的APPID -->
         <activity
@@ -91,14 +94,17 @@
         <service
             android:name="cn.bmob.newim.core.service.NotifyService"
             android:process=":bmobcore" />
-        <service android:name="cn.bmob.newim.core.service.ReConnectService"/>
+        <service android:name="cn.bmob.newim.core.service.ReConnectService" />
         <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
 
         <activity android:name=".activity.ScanActivity" />
-         <activity
-             android:configChanges="keyboardHidden|orientation"
-             android:name=".activity.LifeCircleActivity"/>
-        <activity android:name=".activity.PublishActivity"/>
+        <activity
+            android:name=".activity.LifeCircleActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".activity.PublishActivity" />
+        <activity android:name=".activity.NotificationActivity" />
+        <activity android:name=".activity.DetailsActivity" />
+        <activity android:name=".activity.ImageActivity"></activity>
     </application>
 
 </manifest>

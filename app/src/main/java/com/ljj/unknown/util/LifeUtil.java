@@ -30,6 +30,9 @@ import cn.bmob.v3.listener.UpdateListener;
 
 public class LifeUtil {
 
+
+
+
     public interface QueryLifeListener{
         void onSuccess(List<Post> data);
         void onError(String error);
@@ -37,19 +40,49 @@ public class LifeUtil {
 
     public static void queryLifeUtil(int page , final QueryLifeListener lifeListener){
         BmobQuery<Post> query = new BmobQuery<>();
-        List<BmobQuery<Post>> queryList = new ArrayList<>();
-        for (FriendInfo friendInfo : FriendUtil.getFriendInfo(BmobUser.getCurrentUser(User.class))) {
-            User user = new User();
-            user.setObjectId(friendInfo.getFriendId());
-            BmobQuery<Post> subQuery = new BmobQuery<>();
-            subQuery.addWhereEqualTo("publisher",user);
-            queryList.add(subQuery);
-        }
-        BmobQuery<Post> subQuery = new BmobQuery<>();
-        subQuery.addWhereEqualTo("publisher", BmobUser.getCurrentUser(User.class));
-        queryList.add(subQuery);
+        //注释的部分为添加只查询自己好友发布帖子的功能，因查询条件过多而放弃
+//        List<BmobQuery<Post>> queryList = new ArrayList<>();
+//        for (FriendInfo friendInfo : FriendUtil.getFriendInfo(BmobUser.getCurrentUser(User.class))) {
+//            User user = new User();
+//            user.setObjectId(friendInfo.getFriendId());
+//            BmobQuery<Post> subQuery = new BmobQuery<>();
+//            subQuery.addWhereEqualTo("publisher",user);
+//            queryList.add(subQuery);
+//        }
+//        BmobQuery<Post> subQuery = new BmobQuery<>();
+//        subQuery.addWhereEqualTo("publisher", BmobUser.getCurrentUser(User.class));
+//        queryList.add(subQuery);
         query.include("publisher");
-        query.or(queryList);
+//        query.or(queryList);
+        query.setLimit(10);
+        query.setSkip(page*10);
+        query.order("-createdAt");
+        query.findObjects(new FindListener<Post>() {
+            @Override
+            public void done(List<Post> list, BmobException e) {
+                if (e == null){
+                    lifeListener.onSuccess(list);
+                }else {
+                    if (e.getErrorCode() == 9016){
+                        lifeListener.onError("网络不给力");
+                    }else {
+                        lifeListener.onError(e.getMessage());
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * 查询单个用户的相册信息
+     * @param user   所需查询相册的发布人
+     * @param page   查询的页码
+     * @param lifeListener   查询的监听
+     */
+    public static void queryAlbum(User user,int page , final QueryLifeListener lifeListener){
+        BmobQuery<Post> query = new BmobQuery<>();
+        query.addWhereEqualTo("publisher", user);
+        query.include("publisher");
         query.setLimit(20);
         query.setSkip(page*20);
         query.order("-createdAt");

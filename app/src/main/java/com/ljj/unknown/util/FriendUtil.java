@@ -45,6 +45,12 @@ public class FriendUtil {
      * @param listener   添加监听
      */
     public static void addFriend(final User friendUser , final OnFriendDealListener listener){
+        for (FriendInfo friendInfo : DataSupport.findAll(FriendInfo.class)) {
+            if(friendInfo.getUserId().equals(BmobUser.getCurrentUser(User.class).getObjectId())&& friendInfo.getFriendId().equals(friendUser.getObjectId()) ){
+                listener.onError("已经添加好友");
+                return;
+            }
+        }
         Friend friend = new Friend();
         Friend friend1 = new Friend();
         friend.setUser(BmobUser.getCurrentUser(User.class));

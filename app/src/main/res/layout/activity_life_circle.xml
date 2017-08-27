@@ -40,6 +40,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"/>
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/cv_life_circle"
                         android:src="@drawable/pig"
                         android:layout_marginRight="10dp"
                         android:layout_alignParentRight="true"

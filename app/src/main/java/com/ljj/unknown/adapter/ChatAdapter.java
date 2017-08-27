@@ -1,12 +1,16 @@
 package com.ljj.unknown.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,6 +18,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.ljj.unknown.R;
 import com.ljj.unknown.UnknownApplication;
+import com.ljj.unknown.activity.DetailsActivity;
+import com.ljj.unknown.activity.ImageActivity;
 import com.ljj.unknown.bean.User;
 import com.ljj.unknown.util.NetworkState;
 
@@ -41,8 +47,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private MediaPlayer mediaPlayer;
 
-    public ChatAdapter(List<BmobIMMessage> bmobIMMessages){
+    private Context context;
+
+    public ChatAdapter(Context context,List<BmobIMMessage> bmobIMMessages){
         this.bmobIMMessages=bmobIMMessages;
+        this.context = context;
     }
 
     @Override
@@ -101,9 +110,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             }else {
                 tHolder.rl_text_right.setVisibility(View.GONE);
                 tHolder.rl_text_left.setVisibility(View.VISIBLE);
-                Glide.with(UnknownApplication.getContext())
-                        .load(bmobIMMessages.get(position).getBmobIMUserInfo().getAvatar())
-                        .into(tHolder.cv_text_left_head);
+                if(bmobIMMessages.get(position).getBmobIMUserInfo()!=null) {
+                    Glide.with(UnknownApplication.getContext())
+                            .load(bmobIMMessages.get(position).getBmobIMUserInfo().getAvatar())
+                            .into(tHolder.cv_text_left_head);
+                }
                 tHolder.tv_text_left.setText(bmobIMMessages.get(position).getContent());
             }
         }else if (holder instanceof ImageMessageHolder){
@@ -119,11 +130,28 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     Glide.with(UnknownApplication.getContext())
                             .load(bmobIMMessages.get(position).getContent().split("&")[0])
                             .into(iHolder.iv_image_right);
+                    iHolder.iv_image_right.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, ImageActivity.class);
+                            intent.putExtra("image",bmobIMMessages.get(position).getContent().split("&")[0]);
+                            context.startActivity(intent);
+                        }
+                    });
                 }else {
                     Glide.with(UnknownApplication.getContext())
                             .load(bmobIMMessages.get(position).getContent())
                             .into(iHolder.iv_image_right);
+                    iHolder.iv_image_right.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, ImageActivity.class);
+                            intent.putExtra("image",bmobIMMessages.get(position).getContent());
+                            context.startActivity(intent);
+                        }
+                    });
                 }
+
 
                 if (bmobIMMessages.get(position).getSendStatus() == 2){
                     iHolder.iv_image_fail.setVisibility(View.GONE);
@@ -138,12 +166,24 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             }else {
                 iHolder.rl_image_left.setVisibility(View.VISIBLE);
                 iHolder.rl_image_right.setVisibility(View.GONE);
-                Glide.with(UnknownApplication.getContext())
-                        .load(bmobIMMessages.get(position).getBmobIMUserInfo().getAvatar())
-                        .into(iHolder.cv_image_left);
+                if(bmobIMMessages.get(position).getBmobIMUserInfo()!= null) {
+                    Glide.with(UnknownApplication.getContext())
+                            .load(bmobIMMessages.get(position).getBmobIMUserInfo().getAvatar())
+                            .into(iHolder.cv_image_left);
+
+
+                }
                 Glide.with(UnknownApplication.getContext())
                         .load(bmobIMMessages.get(position).getContent())
                         .into(iHolder.iv_image_left);
+                iHolder.iv_image_left.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, ImageActivity.class);
+                        intent.putExtra("image",bmobIMMessages.get(position).getContent());
+                        context.startActivity(intent);
+                    }
+                });
             }
 
         }else if (holder instanceof VoiceMessageHolder){
@@ -188,10 +228,12 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             }else {
                 vHolder.rl_voice_left.setVisibility(View.VISIBLE);
                 vHolder.rl_voice_right.setVisibility(View.GONE);
-                Glide.with(UnknownApplication.getContext())
-                        .load(bmobIMMessages.get(position).getBmobIMUserInfo().getAvatar())
-                        .into(vHolder.cv_voice_left);
-                vHolder.rl_voice_left.setOnClickListener(new View.OnClickListener() {
+                if(bmobIMMessages.get(position).getBmobIMUserInfo()!=null) {
+                    Glide.with(UnknownApplication.getContext())
+                            .load(bmobIMMessages.get(position).getBmobIMUserInfo().getAvatar())
+                            .into(vHolder.cv_voice_left);
+                }
+                vHolder.ll_left_voice.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Uri uri= Uri.parse(bmobIMMessages.get(position).getContent());
@@ -202,15 +244,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                             mediaPlayer.release();
                         }
                         mediaPlayer = new MediaPlayer().create(UnknownApplication.getContext(),uri);
-                        if (NetworkState.netIsActivity){
+                        if (NetworkState.networkConnected(UnknownApplication.getContext())) {
                             mediaPlayer.start();
                         }
                     }
                 });
-
-
-
-
             }
 
         }
@@ -249,12 +287,14 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         protected CircleImageView cv_voice_right;
         protected TextView tv_voice_left;
         protected TextView tv_voice_right;
+        protected LinearLayout ll_left_voice;
         protected RelativeLayout rl_voice_left;
         protected RelativeLayout rl_voice_right;
         protected ProgressBar pb_voice;
         protected ImageView iv_voice_fail;
         public VoiceMessageHolder(View itemView) {
             super(itemView);
+            ll_left_voice = (LinearLayout)itemView.findViewById(R.id.ll_left_voice);
             cv_voice_left = (CircleImageView) itemView .findViewById(R.id.cv_voice_left);
             cv_voice_right = (CircleImageView) itemView.findViewById(R.id.cv_voice_right);
             tv_voice_left = (TextView) itemView.findViewById(R.id.tv_left_voice);

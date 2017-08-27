@@ -145,7 +145,7 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void done(List<BmobIMMessage> list, BmobException e) {
                 if (e == null) {
-                    adapter = new ChatAdapter(list);
+                    adapter = new ChatAdapter(ChatActivity.this,list);
                     rcChat.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
                     rcChat.setItemAnimator(new DefaultItemAnimator());
                     rcChat.setAdapter(adapter);

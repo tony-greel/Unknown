@@ -15,6 +15,7 @@ import com.ljj.unknown.activity.fragment.ConversationFragment;
 import com.ljj.unknown.activity.fragment.PersonalFragment;
 import com.ljj.unknown.adapter.FragmentAdapter;
 import com.ljj.unknown.util.ImUtil;
+import com.ljj.unknown.util.NetworkState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +94,10 @@ public class MainActivity extends FragmentActivity {
 
             }
         });
+
         ImUtil.connectServer();
+
+
 
     }
 

@@ -31,6 +31,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="15dp">
         <ImageView
+            android:id="@+id/iv_personalinform"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="5dp"

@@ -23,11 +23,14 @@
     <LinearLayout
         android:background="@color/base_bg"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="210dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <LinearLayout
+            android:clickable="true"
+            android:background="@drawable/item_message_selector"
+            android:id="@+id/ll_portrait"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:orientation="horizontal">
@@ -38,11 +41,11 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:text="头像"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textColor="@color/color_1e1e1e"/>
 
             <ImageView
-                android:id="@+id/iv_personal"
+                android:id="@+id/iv_persona2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -51,6 +54,7 @@
 
         </LinearLayout>
 
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1sp"
@@ -58,6 +62,9 @@
             />
 
         <LinearLayout
+            android:clickable="true"
+            android:background="@drawable/item_message_selector"
+            android:id="@+id/ll_name"
             android:layout_width="match_parent"
             android:layout_height="45dp">
 
@@ -65,19 +72,19 @@
                 android:layout_width="55dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
                 android:text="名字"
-                android:textSize="20dp"
                 android:textColor="#000000"
-                android:layout_marginLeft="15dp"/>
+                android:textSize="17dp" />
 
             <TextView
+                android:id="@+id/tv_persona2_name"
                 android:layout_width="55dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
-                android:text="名字"
-                android:textSize="15dp"
+                android:layout_marginLeft="230dp"
                 android:textColor="#686868"
-                android:layout_marginLeft="230dp"/>
+                android:textSize="13dp" />
 
         </LinearLayout>
 
@@ -88,6 +95,9 @@
             />
 
         <LinearLayout
+            android:clickable="true"
+            android:background="@drawable/item_message_selector"
+            android:id="@+id/ll_number"
             android:layout_width="match_parent"
             android:layout_height="45dp">
 
@@ -95,19 +105,21 @@
                 android:layout_width="70dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
                 android:text="尬聊号"
-                android:textSize="20dp"
                 android:textColor="#000000"
-                android:layout_marginLeft="15dp"/>
+                android:textSize="17dp" />
 
             <TextView
-                android:layout_width="100dp"
+                android:gravity="right"
+                android:id="@+id/tv_number"
+                android:layout_width="match_parent"
                 android:layout_height="20dp"
+                android:layout_marginRight="@dimen/dp_10"
                 android:layout_gravity="center"
-                android:text="11111111111"
-                android:textSize="15dp"
+                android:layout_marginLeft="120dp"
                 android:textColor="#686868"
-                android:layout_marginLeft="180dp"/>
+                android:textSize="15dp" />
 
         </LinearLayout>
 
@@ -118,6 +130,8 @@
             />
 
         <LinearLayout
+            android:clickable="true"
+            android:background="@drawable/item_message_selector"
             android:layout_width="match_parent"
             android:layout_height="45dp">
 
@@ -126,38 +140,20 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:text="我的二维码"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textColor="#000000"
                 android:layout_marginLeft="15dp"/>
 
             <ImageView
+                android:id="@+id/iv_qr_code"
+                android:src="@drawable/scan"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="187dp"/>
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1sp"
-            android:background="#e2e2e2"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:text="更多"
-                android:textSize="20dp"
-                android:textColor="#000000"
-                android:layout_marginLeft="15dp"/>
-        </LinearLayout>
-
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -165,5 +161,30 @@
         android:background="#e2e2e2"
         />
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff">
+    <LinearLayout
+        android:id="@+id/ll_more"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:clickable="true"
+        android:background="@drawable/item_message_selector"
+     >
+
+        <TextView
+            android:gravity=""
+            android:layout_width="70dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="更多"
+            android:textColor="#000000"
+            android:textSize="17dp" />
+    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

@@ -56,18 +56,15 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
         if (v == btnSubmitFeedback) {
             String content = etProposalFeedback.getText().toString();
             String contacts = etTelephoneFeedback.getText().toString();
-
             if (content.equals("") || contacts.equals("")) {
                 Toast.makeText(this, "反馈内容或联系方式不能为空", Toast.LENGTH_SHORT).show();
                 return;
             }
             showProgressDialog();
-
             Feedback feedback = new Feedback();
             feedback.setContent(content);
             feedback.setContacts(contacts);
             feedback.save(new SaveListener<String>() {
-
                 @Override
                 public void done(String s, BmobException e) {
                   if(e == null){

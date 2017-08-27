@@ -71,4 +71,5 @@ dependencies {
     compile 'org.litepal.android:core:1.5.1'
     compile 'com.android.support:cardview-v7:21.0.2'
     testCompile 'junit:junit:4.12'
+    compile 'cn.bluemobi.dylan:photoview:1.3'
 }

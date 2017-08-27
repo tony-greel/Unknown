@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +14,28 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.dou361.dialogui.DialogUIUtils;
+import com.dou361.dialogui.bean.TieBean;
+import com.dou361.dialogui.listener.DialogUIItemListener;
 import com.imnjh.imagepicker.SImagePicker;
 import com.ljj.unknown.R;
+import com.ljj.unknown.activity.AlbumActivity;
 import com.ljj.unknown.activity.BaseActivity;
 import com.ljj.unknown.activity.FeedbackActivity;
 import com.ljj.unknown.activity.LifeCircleActivity;
+import com.ljj.unknown.activity.PersonalActivity;
 import com.ljj.unknown.bean.User;
 import com.ljj.unknown.other.CacheManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobUser;
+
+import static com.dou361.dialogui.DialogUIUtils.showToast;
 
 /**
  * Created by Administrator on 2017/8/10.
@@ -51,11 +62,13 @@ public class PersonalFragment extends Fragment {
     @Bind(R.id.iv_personal)
     ImageView ivPersonal;
 
-    BaseActivity baseActivity;
+
 
     public static final int REQUEST_CODE_AVATAR = 100;
 
     public static final String AVATAR_FILE_NAME = "avatar.png";
+
+    BaseActivity baseActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -75,6 +88,7 @@ public class PersonalFragment extends Fragment {
         User user = User.getCurrentUser(User.class);
         tvNickname.setText(user.getNickname());
         return view;
+
     }
 
 
@@ -84,21 +98,9 @@ public class PersonalFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.iv_personal, R.id.rl_life, R.id.rl_feedback})
+    @OnClick({R.id.iv_personal, R.id.rl_life, R.id.rl_feedback, R.id.rl_personal_info, R.id.rl_album, R.id.rl_setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_personal:
-                if (baseActivity.getStorage() && baseActivity.getCcamra()) {
-                    SImagePicker
-                            .from(getActivity())
-                            .pickMode(SImagePicker.MODE_AVATAR)
-                            .showCamera(true)
-                            .cropFilePath(
-                                    CacheManager.getInstance().getImageInnerCache()
-                                            .getAbsolutePath(AVATAR_FILE_NAME))
-                            .forResult(REQUEST_CODE_AVATAR);
-                }
-                break;
             case R.id.rl_life:
                 startActivity(new Intent(getActivity(), LifeCircleActivity.class));
                 break;
@@ -106,6 +108,18 @@ public class PersonalFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), FeedbackActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.rl_personal_info:
+                Intent intent2 = new Intent(getActivity(), PersonalActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.rl_album:
+                Intent intent3 = new Intent(getActivity(), AlbumActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.rl_setting:
+
+
+
         }
     }
 }

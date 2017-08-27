@@ -1,11 +1,13 @@
 package com.ljj.unknown.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -24,6 +26,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.ljj.unknown.R;
 import com.ljj.unknown.UnknownApplication;
+import com.ljj.unknown.activity.DetailsActivity;
 import com.ljj.unknown.bean.Post;
 import com.ljj.unknown.util.FriendUtil;
 import com.ljj.unknown.util.LifeUtil;
@@ -33,6 +36,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.ljj.unknown.UnknownApplication.context;
 import static com.ljj.unknown.UnknownApplication.getContext;
 
 /**
@@ -42,15 +46,17 @@ import static com.ljj.unknown.UnknownApplication.getContext;
 public class LifeAdapter extends RecyclerView.Adapter {
 
     private List<Post> posts;
+    private Context mContext;
 
     private int width;
     private int height;
 
-    public LifeAdapter(){
+    public LifeAdapter(Context context){
         WindowManager wm = (WindowManager) getContext()
                 .getSystemService(Context.WINDOW_SERVICE);
         width = wm.getDefaultDisplay().getWidth();
         height = wm.getDefaultDisplay().getHeight();
+        this.mContext = context;
     }
 
     @Override
@@ -60,7 +66,6 @@ public class LifeAdapter extends RecyclerView.Adapter {
             imageCount = posts.get(position).getImages().length;
         }
         if (imageCount < 2) {
-
             return 1;
         } else if (imageCount == 2) {
             return 2;
@@ -122,6 +127,7 @@ public class LifeAdapter extends RecyclerView.Adapter {
         EditText etLifeItemComment;
         ShineButton sbLife;
         ImageView imageView;
+        View item;
 
         public LifeOneImageViewHolder(View itemView) {
             super(itemView);
@@ -133,6 +139,7 @@ public class LifeAdapter extends RecyclerView.Adapter {
             etLifeItemComment = (EditText) itemView.findViewById(R.id.et_life_item_comment);
             sbLife = (ShineButton) itemView.findViewById(R.id.sb_life);
             imageView = (ImageView) itemView.findViewById(R.id.iv_life_image);
+            this.item = itemView;
         }
 
         public void load(final Post post, final int position){
@@ -239,6 +246,16 @@ public class LifeAdapter extends RecyclerView.Adapter {
                     }
                 });
             }
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, DetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("post",post);
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -253,6 +270,7 @@ public class LifeAdapter extends RecyclerView.Adapter {
         TextView tvLifeItemComment;
         EditText etLifeItemComment;
         ShineButton sbLife;
+        View item;
 
         public LifeTwoImageViewHolder(View itemView) {
             super(itemView);
@@ -265,6 +283,7 @@ public class LifeAdapter extends RecyclerView.Adapter {
             sbLife = (ShineButton) itemView.findViewById(R.id.sb_life);
             ivLifeItemImage1 = (ImageView) itemView.findViewById(R.id.iv_life_item_image1);
             ivLifeItemImage2 = (ImageView) itemView.findViewById(R.id.iv_life_item_image2);
+            this.item = itemView;
         }
 
         public void load(final Post post, final int position){
@@ -348,6 +367,17 @@ public class LifeAdapter extends RecyclerView.Adapter {
                     }
                 });
             }
+
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, DetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("post",post);
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -365,6 +395,7 @@ public class LifeAdapter extends RecyclerView.Adapter {
         TextView tvLifeItemComment;
         EditText etLifeItemComment;
         ShineButton sbLife;
+        View item;
 
         public LifeThereImageViewHolder(View itemView) {
             super(itemView);
@@ -379,6 +410,7 @@ public class LifeAdapter extends RecyclerView.Adapter {
             ivLifeItemImage2 = (ImageView) itemView.findViewById(R.id.iv_life_item_image2);
             ivLifeItemImage3 = (ImageView) itemView.findViewById(R.id.iv_life_item_image3);
             tvLifeImageCount = (TextView) itemView.findViewById(R.id.tv_life_image_count);
+            this.item = itemView;
         }
         public void load(final Post post, final int position){
 
@@ -420,6 +452,7 @@ public class LifeAdapter extends RecyclerView.Adapter {
             }else {
                 tvLifeItemTime.setText((distanceTime/(1000L*60L*60L*24L))+"天前");
             }
+            //加载帖子评论
             if (post.getComment() != null && post.getComment().length>0){
                 tvLifeItemComment.setText("");
                 for (String s : post.getComment()) {
@@ -472,6 +505,19 @@ public class LifeAdapter extends RecyclerView.Adapter {
                     }
                 });
             }
+
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, DetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("post",post);
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
+                }
+            });
+
+
         }
     }
 
