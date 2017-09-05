@@ -33,6 +33,8 @@ public class UnknownMessageHandler extends BmobIMMessageHandler {
     public void onMessageReceive(MessageEvent messageEvent) {
         super.onMessageReceive(messageEvent);
         excuteMessage(messageEvent);
+
+
     }
 
     @Override
@@ -71,6 +73,7 @@ public class UnknownMessageHandler extends BmobIMMessageHandler {
 
         }else {
             EventBus.getDefault().post(messageEvent.getMessage());
+
         }
     }
 

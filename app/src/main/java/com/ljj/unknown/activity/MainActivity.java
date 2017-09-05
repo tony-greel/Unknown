@@ -99,6 +99,7 @@ public class MainActivity extends FragmentActivity {
 
             }
         });
+
         ImUtil.connectServer();
 
     }
