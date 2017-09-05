@@ -20,4 +20,5 @@
     <string name="voice_up_tips">手指上滑,取消发送</string>
     <string name="voice_cancel_tips">松开手指，取消发送</string>
     <string name="scan_info_text">扫一扫二维码，加我关注</string>
+    <string name="agora_app_id">4a24d67093844a2f804e1417047613d3</string>
 </resources>

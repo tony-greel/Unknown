@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 
 import com.ljj.unknown.activity.NotificationActivity;
+import com.ljj.unknown.activity.VideoChatViewActivity;
 import com.ljj.unknown.bean.User;
 
 import org.greenrobot.eventbus.EventBus;
@@ -32,8 +33,6 @@ public class UnknownMessageHandler extends BmobIMMessageHandler {
     public void onMessageReceive(MessageEvent messageEvent) {
         super.onMessageReceive(messageEvent);
         excuteMessage(messageEvent);
-
-
     }
 
     @Override
@@ -72,7 +71,6 @@ public class UnknownMessageHandler extends BmobIMMessageHandler {
 
         }else {
             EventBus.getDefault().post(messageEvent.getMessage());
-
         }
     }
 

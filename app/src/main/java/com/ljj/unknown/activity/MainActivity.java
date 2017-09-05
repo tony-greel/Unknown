@@ -17,6 +17,10 @@ import com.ljj.unknown.adapter.FragmentAdapter;
 import com.ljj.unknown.util.ImUtil;
 import com.ljj.unknown.util.NetworkState;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +28,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.bean.BmobIMMessage;
 
 public class MainActivity extends FragmentActivity {
 
@@ -94,12 +99,40 @@ public class MainActivity extends FragmentActivity {
 
             }
         });
-
         ImUtil.connectServer();
 
-
-
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().unregister(this);
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(BmobIMMessage event) {
+        if (event.getContent().equals("#video^chat#")){
+            Intent intent = new Intent(this,CallActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("user",event.getBmobIMUserInfo());
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+    }
+
+
+
+
 
     @OnClick({R.id.ll_bottom_menu_conversation, R.id.ll_bottom_menu_contacts, R.id.ll_bottom_menu_personal, R.id.iv_add_friend})
     public void onViewClicked(View view) {

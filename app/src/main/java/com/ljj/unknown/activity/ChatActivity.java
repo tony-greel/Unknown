@@ -18,6 +18,8 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -165,6 +167,38 @@ public class ChatActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_chat,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.call){
+            showProgressDialog();
+            final String channel = BmobUser.getCurrentUser(User.class).getObjectId();
+            BmobIMTextMessage msg = new BmobIMTextMessage();
+            msg.setContent("#video^chat#");
+            msg.setFromId(channel);
+            conversation.sendMessage(msg, new MessageSendListener() {
+                @Override
+                public void done(BmobIMMessage bmobIMMessage, BmobException e) {
+                    dismiss();
+                    if (e == null){
+                        Intent intent = new Intent(ChatActivity.this,VideoChatViewActivity.class);
+                        intent.putExtra("channel",channel);
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(mActivity, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void sendTextMessage() {
